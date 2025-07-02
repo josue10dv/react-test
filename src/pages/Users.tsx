@@ -1,6 +1,21 @@
-import { useEffect, useState, type JSX } from "react";
+import {
+    useEffect,
+    useState,
+    type JSX
+} from "react";
 import axios from "axios";
-import { Container, Card, Row, Col, Table, InputGroup, Form, Button, Alert, Spinner } from "react-bootstrap";
+import {
+    Container,
+    Card,
+    Row,
+    Col,
+    Table,
+    InputGroup,
+    Form,
+    Button,
+    Alert,
+    Spinner
+} from "react-bootstrap";
 
 interface User {
     id: number;
@@ -11,7 +26,7 @@ interface User {
 export default function Users(): JSX.Element {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [minAge, setMinAge] = useState<string>("");
+    const [searchTerm, setSearchTerm] = useState<string>("");
     const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
 
     useEffect(() => {
@@ -29,19 +44,31 @@ export default function Users(): JSX.Element {
             .finally(() => setLoading(false));
     }, []);
 
-    const handleFilter = () => {
-        if (minAge === "") {
+    // Filtrado en tiempo real cuando cambia el término de búsqueda
+    useEffect(() => {
+        if (searchTerm === "") {
             setFilteredUsers(users);
         } else {
-            // Como la API no devuelve edad, simularemos el filtro con el ID
-            const ageFilter = parseInt(minAge);
-            const filtered = users.filter(user => user.id >= ageFilter);
+            const filtered = users.filter(user => 
+                user.username.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setFilteredUsers(filtered);
+        }
+    }, [searchTerm, users]);
+
+    const handleFilter = () => {
+        if (searchTerm === "") {
+            setFilteredUsers(users);
+        } else {
+            const filtered = users.filter(user => 
+                user.username.toLowerCase().includes(searchTerm.toLowerCase())
+            );
             setFilteredUsers(filtered);
         }
     };
 
     const clearFilter = () => {
-        setMinAge("");
+        setSearchTerm("");
         setFilteredUsers(users);
     };
     return (
@@ -63,10 +90,10 @@ export default function Users(): JSX.Element {
                                             <i className="bi bi-filter"></i>
                                         </InputGroup.Text>
                                         <Form.Control
-                                            type="number"
-                                            placeholder="Filtrar por ID mínimo"
-                                            value={minAge}
-                                            onChange={(e) => setMinAge(e.target.value)}
+                                            type="text"
+                                            placeholder="Filtrar por nombre de usuario"
+                                            value={searchTerm}
+                                            onChange={(e) => setSearchTerm(e.target.value)}
                                         />
                                         <Button variant="success" onClick={handleFilter}>
                                             Filtrar

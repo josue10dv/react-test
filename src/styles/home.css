@@ -1,0 +1,39 @@
+/* Estilos personalizados para la página Home */
+
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.bg-gradient {
+    background: linear-gradient(45deg, #007bff, #6610f2) !important;
+}
+
+/* Animación para los iconos */
+.hover-card .bi {
+    transition: transform 0.3s ease;
+}
+
+.hover-card:hover .bi {
+    transform: scale(1.1);
+}
+
+/* Mejoras para el carrusel */
+.carousel-caption {
+    backdrop-filter: blur(5px);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .bi[style*="fontSize: \"3rem\""] {
+        font-size: 2rem !important;
+    }
+}
