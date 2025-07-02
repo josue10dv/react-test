@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import { appRoutes } from "./routes/routes";
+import { appRoutes } from "./routes/Routes";
 import type { JSX } from "react";
 
 
