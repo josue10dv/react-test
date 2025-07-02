@@ -13,7 +13,7 @@ export default function Header() {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/users">Usuarios</Nav.Link>
-                        <Nav.Link href="#salary">Sueldo</Nav.Link>
+                        <Nav.Link as={Link} to="/sueldo">Sueldo</Nav.Link>
                         <Nav.Link href="#bond">Bono</Nav.Link>
                         <Nav.Link href="#register">Registro</Nav.Link>
                     </Nav>
