@@ -4,6 +4,7 @@ import GeneralLayout from "../layouts/GeneralLayout";
 import Home from "../pages/Home";
 import Users from "../pages/Users";
 import Sueldo from "../pages/Sueldo";
+import Bono from "../pages/Bono";
 
 export const appRoutes: RouteObject[] = [
   {
@@ -13,6 +14,7 @@ export const appRoutes: RouteObject[] = [
       { index: true, element: <Home /> },
       { path: "users", element: <Users /> },
       { path: "sueldo", element: <Sueldo /> },
+      { path: "bono", element: <Bono /> },
     ],
   }
 ];

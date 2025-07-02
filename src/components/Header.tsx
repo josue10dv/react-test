@@ -14,7 +14,7 @@ export default function Header() {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/users">Usuarios</Nav.Link>
                         <Nav.Link as={Link} to="/sueldo">Sueldo</Nav.Link>
-                        <Nav.Link href="#bond">Bono</Nav.Link>
+                        <Nav.Link as={Link} to="/bono">Bono</Nav.Link>
                         <Nav.Link href="#register">Registro</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
